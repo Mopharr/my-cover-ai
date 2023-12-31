@@ -1,13 +1,13 @@
 <template>
-    testing
+  <div class="dashboard">testing</div>
 </template>
 
 <script>
 definePageMeta({
-    layout:"dashboard"
-})
+  layout: "dashboard",
+});
 </script>
 
 <style>
-
+@import url("~/Asset/dashboard.css");
 </style>

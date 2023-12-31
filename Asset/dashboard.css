@@ -1,0 +1,9 @@
+body {
+    margin: 0;
+}
+.dashboard{
+    margin: 0;
+    left: 300px;
+    color: green;
+    background-color: yellow;
+}
