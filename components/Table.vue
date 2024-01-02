@@ -1,8 +1,14 @@
 <template>
-  <div class="table ">
+  <div class="table">
     <div class="orderTop">
-      <h2>Order</h2>
-      <p>View All</p>
+      <h2>Product</h2>
+      <div class="method">
+        <button><IoFilterOutline /> Filters</button>
+        <div class="input">
+          <IconsSearch class="search"/>
+          <input placeholder="search" />
+        </div>
+      </div>
     </div>
     <div class="proDuctTable">
       <table class="inTable">
@@ -53,7 +59,6 @@
 </template>
 
 <script>
-// Assuming data.json is located in the static directory of your Nuxt.js project.
 export default {
   data() {
     return {
