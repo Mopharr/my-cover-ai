@@ -3,23 +3,27 @@
 </style>
 <script>
 export default {
+  props: {
+    toggleSide: Function
+  },
   data() {
     return {
-      isActiveSide: false,
+      isActiveSide: false
     };
   },
   methods: {
     toggleSide() {
       this.isActiveSide = !this.isActiveSide;
-    },
-  },
+      this.$emit('toggle-side'); 
+    }
+  }
 };
 </script>
 
 <template>
   <div :class="{ activeSide: !isActiveSide, side: isActiveSide }">
     <div class="log">
-      <IconsHamburger class="ham" @click="toggleSide" />
+      <IconsHamburger class="ham"  @click="toggleSide" />
     </div>
     <div className="linee"></div>
 
