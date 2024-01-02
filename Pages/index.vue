@@ -270,7 +270,7 @@ body {
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
-  line-height: 28px; /* 155.556% */
+  line-height: 28px;
 }
 .tabTil button {
   display: flex;
@@ -485,9 +485,7 @@ export default {
   <div :class="{ dashboard: isActiveSide, boardPartAct: !isActiveSide }">
     <div className="boardBody">
       <DashboardTop />
-      <div className="dashActivity">
-        <SalesReport />
-      </div>
+
     </div>
   </div>
 </template>
