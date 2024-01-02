@@ -19,7 +19,7 @@ export default {
 </script>
 
 <template>
-  <div :class="{ dashboard: isActiveSide, boardPartAct: !isActiveSide }">
+  <div>
     <div class="boardBody">
       <div class="dop">
         <div class="dTit">

@@ -1,13 +1,10 @@
-<template>
-  product Details
-</template>
+<template>product Details</template>
 
 <script>
-export default {
-
-}
+definePageMeta({
+  layout: "dashboard",
+});
+export default {};
 </script>
 
-<style>
-
-</style>
+<style></style>

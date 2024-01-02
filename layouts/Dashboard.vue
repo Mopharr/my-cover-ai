@@ -1,28 +1,18 @@
 <style>
-  @import "~/Asset/dashboard.css";
-
-.fullBoard {
-  background-color: red;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 99.2vw;
-  overflow-x: hidden;
-
-}
-
+@import "../Asset/dashboard.css";
 </style>
 
 <script>
 export default {
   data() {
     return {
-      isActiveSide: false,
+      isOpen: true,
     };
   },
   methods: {
-    toggleSide() {
-      this.isActiveSide = !this.isActiveSide;
+    handleChange() {
+      this.isOpen = !this.isOpen;
+      console.log(this.isOpen);
     },
   },
 };
@@ -30,7 +20,9 @@ export default {
 
 <template>
   <div class="fullboard">
-    <Sidebar :toggleSide="toggleSide" />
-    <slot />
+    <Sidebar :handle-change="handleChange" :is-open="isOpen" />
+    <div :class="isOpen === true ? 'boardPartAct' : 'boardPart'">
+      <slot />
+    </div>
   </div>
 </template>

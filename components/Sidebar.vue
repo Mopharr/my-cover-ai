@@ -4,32 +4,22 @@
 <script>
 export default {
   props: {
-    toggleSide: Function
+    handleChange: Function,
+    isOpen: Boolean,
   },
-  data() {
-    return {
-      isActiveSide: false
-    };
-  },
-  methods: {
-    toggleSide() {
-      this.isActiveSide = !this.isActiveSide;
-      this.$emit('toggle-side'); 
-    }
-  }
 };
 </script>
 
 <template>
-  <div :class="{ activeSide: !isActiveSide, side: isActiveSide }">
+  <div :class="isOpen === true ? 'activeSide' : 'side'">
     <div class="log">
-      <IconsHamburger class="ham"  @click="toggleSide" />
+      <IconsHamburger class="ham" @click="handleChange" />
     </div>
     <div class="linee"></div>
 
     <div class="navItem">
       <NuxtLink to="/" class="link">
-        <IconsDashboard class="icons"/> <span> Dashboard</span>
+        <IconsDashboard class="icons" /> <span> Dashboard</span>
       </NuxtLink>
       <NuxtLink to="/productDetails" class="link">
         <IconsProduct class="icons" /> <span> Product </span></NuxtLink
