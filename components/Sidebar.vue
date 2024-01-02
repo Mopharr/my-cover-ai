@@ -25,7 +25,7 @@ export default {
     <div class="log">
       <IconsHamburger class="ham"  @click="toggleSide" />
     </div>
-    <div className="linee"></div>
+    <div class="linee"></div>
 
     <div class="navItem">
       <NuxtLink to="/" class="link">
@@ -37,7 +37,7 @@ export default {
     </div>
 
     <div class="sideBottom">
-      <div className="linee"></div>
+      <div class="linee"></div>
 
       <NuxtLink to="#" class="link">
         <IconsLogout class="icons" />

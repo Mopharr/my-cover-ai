@@ -24,7 +24,7 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 3em 0 0em;
+  padding: 3em 1em 0em;
 }
 .dTit h2 {
   color: var(--Gray-900, #101828);
@@ -83,6 +83,7 @@ body {
   align-items: flex-end;
   justify-content: space-between;
   margin-bottom: 1em;
+  padding: 0 1em;
 }
 
 .sTit h2 {
@@ -483,9 +484,18 @@ export default {
 
 <template>
   <div :class="{ dashboard: isActiveSide, boardPartAct: !isActiveSide }">
-    <div className="boardBody">
-      <DashboardTop />
-
+    <div class="boardBody">
+         <div class="dop">
+        <div class="dTit">
+          <h2>Dashboard</h2>
+          <p>Overview of all activities</p>
+        </div>
+        <div class="DTBtn">
+          <button><IoCloudDownloadOutline /> Export Report</button>
+          <button><FaPlus /> Invite</button>
+        </div>
+      </div>
     </div>
+    <Table />
   </div>
 </template>
