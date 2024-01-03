@@ -7,16 +7,11 @@ export default {
     handleChange: Function,
     isOpen: Boolean,
   },
-  methods: {
-    checkIfOpen() {
-      console.log("side",this.isOpen); // This will log the current value of isOpen
-    },
-  },
 };
 </script>
 
 <template>
-  <div :class="isOpen === true ? 'activeSide' : 'side'">
+  <div :class="isOpen === false ? 'activeSide' : 'side'">
     <div class="log">
       <IconsHamburger class="ham" @click="handleChange" />
     </div>
@@ -26,9 +21,6 @@ export default {
       <NuxtLink to="/" class="link">
         <IconsDashboard class="icons" /> <span> Dashboard</span>
       </NuxtLink>
-      <NuxtLink to="/productDetails" class="link">
-        <IconsProduct class="icons" /> <span> Product </span></NuxtLink
-      >
     </div>
 
     <div class="sideBottom">

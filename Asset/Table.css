@@ -223,3 +223,10 @@
   line-height: 145%;
   margin: auto;
 }
+
+@media (max-width: 600px) {
+  .orderTop {
+    flex-direction: column;
+    gap: 1em;
+  }
+}

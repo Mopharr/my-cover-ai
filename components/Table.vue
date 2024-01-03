@@ -4,11 +4,12 @@
       <h2>Product</h2>
       <div class="method">
         <button @click="toggleModal"><IoFilterOutline /> Filters</button>
-        <FilterModal
-          v-if="showModal"
-          :categories="['all', 'Health', 'Auto', 'Gadget', 'Package']"
-          @select="applyFilter"
-        />
+          <FilterModal
+            v-if="showModal"
+            :categories="['all', 'Health', 'Auto', 'Gadget', 'Package']"
+            @select="applyFilter"
+          />
+
         <div class="input">
           <IconsSearch class="search" />
           <input type="text" placeholder="search" v-model="searchQuery" />

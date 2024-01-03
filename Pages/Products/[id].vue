@@ -81,7 +81,6 @@ export default {
     onMounted(async () => {
       if (productId) {
         await productStore.fetchSingleProduct(productId);
-        console.log("Fetched product:", productStore.singleProduct.name);
       }
     });
     return { productStore, selectedTab };

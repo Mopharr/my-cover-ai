@@ -21,7 +21,7 @@ export default {
 <template>
   <div class="fullboard">
     <Sidebar :handle-change="handleChange" :is-open="isOpen" />
-    <div :class="{ boardPartAct: isOpen, boardPart: !isOpen }">
+    <div :class="{ boardPartAct: !isOpen, boardPart: isOpen }">
       <slot />
     </div>
   </div>

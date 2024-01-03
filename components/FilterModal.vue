@@ -1,16 +1,14 @@
 <template>
-  <div class="modalCon">
-    <div class="modal">
-      <ul>
-        <li
-          v-for="category in categories"
-          :key="category"
-          @click="selectCategory(category)"
-        >
-          {{ category }}
-        </li>
-      </ul>
-    </div>
+  <div class="modal">
+    <ul>
+      <li
+        v-for="category in categories"
+        :key="category"
+        @click="selectCategory(category)"
+      >
+        {{ category }}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -28,13 +26,11 @@ export default {
 </script>
 
 <style>
-.modalCon {
-  position: relative;
-}
 .modal {
   width: 300px;
   position: absolute;
-left: -20%;
+  left: -32%;
+  top: 120%;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -49,11 +45,21 @@ left: -20%;
   cursor: pointer;
   padding: 10px 0;
   cursor: pointer;
-  border-bottom: 1px solid grey;
   transition: all 0.3s ease;
+  list-style: none;
+  color: var(--Gray-600, #475467);
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  cursor: pointer;
+  padding-left: 0.5em;
 }
 
 .modal li:hover {
-  background: rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.1);
+  padding-left: 0.5em;
 }
 </style>

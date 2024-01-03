@@ -1,6 +1,9 @@
 import axios from "axios";
 import { defineStore } from "pinia";
 
+const API_URL = "https://staging.api.mycover.ai";
+const token_Value = "MCASECK|138323a7-3807-4f6e-b043-dd0bb1277bcd";
+
 export const useProductStore = defineStore("product", {
   state: () => ({
     products: [],
@@ -13,14 +16,14 @@ export const useProductStore = defineStore("product", {
       this.isLoading = true;
       this.error = null;
       try {
-        const token = "MCASECK|138323a7-3807-4f6e-b043-dd0bb1277bcd";
+        const token = token_Value;
         const config = {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         };
         const res = await axios.get(
-          "https://staging.api.mycover.ai/v1/products/get-all-products",
+          `${API_URL}/v1/products/get-all-products`,
           config
         );
         this.allProducts = this.products = res.data.data.products;
@@ -46,18 +49,14 @@ export const useProductStore = defineStore("product", {
       this.isLoading = true;
       this.error = null;
       try {
-        const token = "MCASECK|138323a7-3807-4f6e-b043-dd0bb1277bcd";
+        const token = token_Value;
         const config = {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         };
-        const res = await axios.get(
-          `https://staging.api.mycover.ai/v1/products/${id}`,
-          config
-        );
-        this.singleProduct =  res.data.data.product;
-        console.log("Data:", this.singleProduct);
+        const res = await axios.get(`${API_URL}/v1/products/${id}`, config);
+        this.singleProduct = res.data.data.product;
       } catch (error) {
         this.error = error;
         console.error("Error:", error);
@@ -65,6 +64,5 @@ export const useProductStore = defineStore("product", {
         this.isLoading = false;
       }
     },
-    
   },
 });
