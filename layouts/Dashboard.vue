@@ -12,7 +12,7 @@ export default {
   methods: {
     handleChange() {
       this.isOpen = !this.isOpen;
-      console.log(this.isOpen);
+      console.log("dashboad", this.isOpen);
     },
   },
 };
@@ -21,7 +21,7 @@ export default {
 <template>
   <div class="fullboard">
     <Sidebar :handle-change="handleChange" :is-open="isOpen" />
-    <div :class="isOpen === true ? 'boardPartAct' : 'boardPart'">
+    <div :class="{ boardPartAct: isOpen, boardPart: !isOpen }">
       <slot />
     </div>
   </div>

@@ -7,6 +7,11 @@ export default {
     handleChange: Function,
     isOpen: Boolean,
   },
+  methods: {
+    checkIfOpen() {
+      console.log("side",this.isOpen); // This will log the current value of isOpen
+    },
+  },
 };
 </script>
 
