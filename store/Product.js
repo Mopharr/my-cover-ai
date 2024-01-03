@@ -4,6 +4,7 @@ import { defineStore } from "pinia";
 export const useProductStore = defineStore("product", {
   state: () => ({
     products: [],
+    allProducts: [],
     isLoading: false,
     error: null,
   }),
@@ -22,13 +23,22 @@ export const useProductStore = defineStore("product", {
           "https://staging.api.mycover.ai/v1/products/get-all-products",
           config
         );
-        this.products = res.data.data.products;
+        this.allProducts = this.products = res.data.data.products;
         console.log("Data:", this.products);
       } catch (error) {
         this.error = error;
         console.error("Error:", error);
       } finally {
         this.isLoading = false;
+      }
+    },
+    filterByCategory(category) {
+      if (category === "all") {
+        this.products = this.allProducts;
+      } else {
+        this.products = this.allProducts.filter(
+          (p) => p.productCategory.name === category
+        );
       }
     },
   },
