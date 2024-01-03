@@ -41,5 +41,7 @@ export const useProductStore = defineStore("product", {
         );
       }
     },
+
+    
   },
 });

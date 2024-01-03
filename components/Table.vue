@@ -11,7 +11,7 @@
         />
         <div class="input">
           <IconsSearch class="search" />
-          <input placeholder="search" />
+          <input type="text" placeholder="search" v-model="searchQuery" />
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@
         </thead>
         <tbody>
           <tr
-            v-for="product in productStore.products"
+            v-for="product in filteredProducts"
             :key="product?.id"
             class="Tbody"
           >
@@ -42,7 +42,7 @@
                 </div>
               </div>
             </td>
-            <td>{{ product.price }}</td>
+            <td>${{ product.price }}</td>
             <td>
               <p>{{ product.productCategory.name }}</p>
             </td>
@@ -51,7 +51,7 @@
             </td>
             <td>{{ product.created_at }}</td>
             <td class="tabAct">
-              <font-awesome-icon icon="ellipsis-v" />
+              <IconsDot />
             </td>
           </tr>
         </tbody>
@@ -59,20 +59,24 @@
     </div>
   </div>
 </template>
-
 <script>
+import { ref, computed, onMounted } from "vue";
 import { useProductStore } from "../store/Product";
-import { onMounted, ref } from "vue";
+import FilterModal from "./FilterModal.vue"; 
 
 export default {
+  components: {
+    FilterModal,
+  },
   setup() {
     const showModal = ref(false);
+    const searchQuery = ref("");
     const productStore = useProductStore();
 
     const toggleModal = () => {
       showModal.value = !showModal.value;
-      console.log(showModal.value);
     };
+
     onMounted(async () => {
       await productStore.fetchProduct();
     });
@@ -84,6 +88,16 @@ export default {
     const capitalizeFirstLetter = (string) => {
       return string.charAt(0).toUpperCase() + string.slice(1);
     };
+
+    const filteredProducts = computed(() => {
+      if (!searchQuery.value) {
+        return productStore.products;
+      }
+      return productStore.products.filter((product) =>
+        product.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+      );
+    });
+
     const applyFilter = (category) => {
       productStore.filterByCategory(category);
       showModal.value = false;
@@ -94,7 +108,10 @@ export default {
       getStatusClass,
       capitalizeFirstLetter,
       applyFilter,
+      filteredProducts,
       toggleModal,
+      showModal,
+      searchQuery,
     };
   },
 };
