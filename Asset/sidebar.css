@@ -41,7 +41,6 @@
 
 .side .navItem {
   margin: 1em 0 0;
-  overflow-y: scroll;
   height: 100%;
   padding-left: 1em;
   position: relative;
@@ -169,7 +168,6 @@
   }
   .side .navItem {
     margin: 1em 0 0;
-    overflow-y: scroll;
   }
   .side .navItem .link {
     list-style: none;
