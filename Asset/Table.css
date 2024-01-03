@@ -87,7 +87,6 @@
 }
 .Tbody {
   margin-bottom: 1em;
-  cursor: pointer;
   transition: all 0.4s ease-in-out;
 }
 .Tbody:hover {
@@ -108,7 +107,18 @@
   justify-content: flex-start;
   gap: 0.4em;
 }
-
+.tabAct {
+  background-color: #989898;
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  border-radius: 4px;
+  margin: auto;
+  cursor: pointer;
+}
 .tName {
   display: flex;
   align-items: center;

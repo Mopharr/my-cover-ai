@@ -7,13 +7,13 @@
   >
     <path
       fill="currentColor"
-      d="M112 60a16 16 0 1 1 16 16a16 16 0 0 1-16-16m16 52a16 16 0 1 0 16 16a16 16 0 0 0-16-16m0 68a16 16 0 1 0 16 16a16 16 0 0 0-16-16"
+      d="M156 128a28 28 0 1 1-28-28a28 28 0 0 1 28 28m-28-52a28 28 0 1 0-28-28a28 28 0 0 0 28 28m0 104a28 28 0 1 0 28 28a28 28 0 0 0-28-28"
     ></path>
   </svg>
 </template>
 
 <script>
 export default {
-  name: "PhDotsThreeVerticalBold",
+  name: "PhDotsThreeOutlineVerticalFill",
 };
 </script>

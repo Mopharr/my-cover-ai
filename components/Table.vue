@@ -34,7 +34,6 @@
             class="Tbody"
           >
             <td>
-              <input type="checkbox" />
               <div class="tName">
                 <h4 class="nIcon">{{ product.name[0] }}</h4>
                 <div class="userTName">
@@ -51,7 +50,9 @@
             </td>
             <td>{{ product.created_at }}</td>
             <td class="tabAct">
-              <IconsDot />
+              <NuxtLink :to="`/products/${product.id}`">
+                <IconsDot />
+              </NuxtLink>
             </td>
           </tr>
         </tbody>
@@ -62,7 +63,7 @@
 <script>
 import { ref, computed, onMounted } from "vue";
 import { useProductStore } from "../store/Product";
-import FilterModal from "./FilterModal.vue"; 
+import FilterModal from "./FilterModal.vue";
 
 export default {
   components: {
