@@ -1,0 +1,88 @@
+.details {
+  background-color: #f5f5f5;
+  padding: 1em;
+  width: 95%;
+  margin: 2em auto 0;
+  border-radius: 10px;
+}
+.details h2 {
+  margin: 0 0 0.5em;
+  color: var(--Gray-900, #101828);
+  font-family: "Inter", sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 38px;
+}
+
+.details p {
+  color: var(--Gray-600, #475467);
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0;
+}
+
+.details span {
+  color: var(--Gray-600, #475467);
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0;
+}
+
+.prodetails {
+  background-color: #f5f5f5;
+  padding: 1em;
+  width: 95%;
+  margin: 2em auto 0;
+  border-radius: 10px;
+  min-height: 300px;
+}
+.prodetails .detailsTittle {
+  width: 100%;
+  border-bottom: 1px solid grey;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5em;
+}
+
+.prodetails .detailsTittle li {
+  list-style: none;
+  color: var(--Gray-600, #475467);
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  cursor: pointer;
+}
+.prodetails .detailsTittle .activeTittle {
+  border-bottom: #101828 1px solid;
+  color: #101828;
+  font-size: bold;
+}
+
+.detailsContent {
+  color: var(--Gray-600, #475467);
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  
+}
+.noVal {
+    color: var(--Gray-600, #475467);
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    padding-left: 2em;
+}
