@@ -5,50 +5,51 @@
       <div class="method">
         <button><IoFilterOutline /> Filters</button>
         <div class="input">
-          <IconsSearch class="search"/>
+          <IconsSearch class="search" />
           <input placeholder="search" />
         </div>
       </div>
     </div>
     <div class="proDuctTable">
+      <!-- <div v-for="product in productStore.products" :key="product?.id">
+        {{ product.name }}
+      </div> -->
+
       <table class="inTable">
         <thead>
           <tr class="poHead">
             <th>Name</th>
             <th>Amount</th>
-            <th>Payment Type</th>
+            <th>Product Category</th>
+            <th>Product Status</th>
             <th>Date</th>
-            <th>Status</th>
-            <th></th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr
-            v-for="(user, inx) in data"
-            :key="inx"
-            @click="handleToggle(user)"
+            v-for="product in productStore.products"
+            :key="product?.id"
             class="Tbody"
           >
             <td>
               <input type="checkbox" />
               <div class="tName">
-                <h4 class="nIcon">{{ user.name[0] }}</h4>
+                <h4 class="nIcon">{{ product.name[0] }}</h4>
                 <div class="userTName">
-                  <h2>{{ user.name }}</h2>
-                  <p>{{ user.email }}</p>
+                  <h2>{{ product.name }}</h2>
                 </div>
               </div>
             </td>
-            <td>{{ user.amount }}</td>
+            <td>{{ product.price }}</td>
             <td>
-              <p>{{ user.type }}</p>
+              <p>{{ product.productCategory.name }}</p>
             </td>
-            <td>{{ user.date }}</td>
-            <td>
-              <p :style="getStatusStyle(user.status)">{{ user.status }}</p>
+            <td :class="getStatusClass(product.active)">
+              {{ capitalizeFirstLetter(product.active.toString()) }}
             </td>
+            <td>{{ product.created_at }}</td>
             <td class="tabAct">
-              <!-- Use Vue.js compatible icons like vue-fontawesome -->
               <font-awesome-icon icon="ellipsis-v" />
             </td>
           </tr>
@@ -59,38 +60,26 @@
 </template>
 
 <script>
+import { useProductStore } from "../store/Product";
+import { onMounted } from "vue";
+
 export default {
-  data() {
-    return {
-      data: require("../utils/data.json"),
+  setup() {
+    const productStore = useProductStore();
+
+    onMounted(async () => {
+      await productStore.fetchProduct();
+    });
+
+    const getStatusClass = (status) => {
+      return status ? "status-true" : "status-false";
     };
-  },
-  methods: {
-    handleToggle(user) {},
-    getStatusStyle(status) {
-      switch (status) {
-        case "failed":
-          return {
-            backgroundColor: "rgba(255, 0, 0, 0.2)",
-            color: "#F00",
-            opacity: "1",
-          };
-        case "pending":
-          return {
-            backgroundColor: "rgba(216, 169, 0, 0.10)",
-            color: "#D8A900",
-            opacity: "1",
-          };
-        case "success":
-          return {
-            backgroundColor: "rgba(7, 173, 34, 0.10)",
-            color: "#07AD22",
-            opacity: "1",
-          };
-        default:
-          return {};
-      }
-    },
+
+    const capitalizeFirstLetter = (string) => {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    };
+
+    return { productStore, getStatusClass, capitalizeFirstLetter };
   },
 };
 </script>
@@ -290,5 +279,26 @@ export default {
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
+}
+.status-true {
+  /* background-color: rgba(0, 128, 0, 0.5); */
+      background-color: #ecfdf3;
+  color: #45b26b !important;
+  width: 35px;
+  display: flex;
+  align-self: center;
+  padding: 2px 25px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  border-radius: 12px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 145%;
+  margin: auto;
 }
 </style>

@@ -1,0 +1,35 @@
+import axios from "axios";
+import { defineStore } from "pinia";
+
+export const useProductStore = defineStore("product", {
+  state: () => ({
+    products: [],
+    isLoading: false,
+    error: null,
+  }),
+  actions: {
+    async fetchProduct() {
+      this.isLoading = true;
+      this.error = null;
+      try {
+        const token = "MCASECK|138323a7-3807-4f6e-b043-dd0bb1277bcd";
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+        const res = await axios.get(
+          "https://staging.api.mycover.ai/v1/products/get-all-products",
+          config
+        );
+        this.products = res.data.data.products;
+        console.log("Data:", this.products);
+      } catch (error) {
+        this.error = error;
+        console.error("Error:", error);
+      } finally {
+        this.isLoading = false;
+      }
+    },
+  },
+});
